@@ -16,6 +16,9 @@ var app = express();
 var server = http.createServer(app);
 var io = socketIO(server);
 
+//importing generatemessage module
+const {generatemessage} = require("./utils/message");
+
 //setting up middleware
 
 // io is responsible for all connections while socket is for only one connection
@@ -25,17 +28,9 @@ io.on('connection',(socket)=>{
     console.log('New User');
 
 //this will send only to that user who is sending
-    socket.emit('newMessage',{
-      from : "Admin",
-      text : "Welcome to Chat Application",
-      createdAt : new Date().getTime()
-    });
+    socket.emit('newMessage',generatemessage("Admin","Welcome to chat application"));
 
-    socket.broadcast.emit('newMessage',{
-      from : "Admin",
-      text : "New User Joined",
-      createdAt : new Date().getTime()
-    });
+    socket.broadcast.emit('newMessage',generatemessage("Admin","New User Joined"));
 
 
     socket.on('createMessage',(message)=>{
@@ -43,11 +38,7 @@ io.on('connection',(socket)=>{
 
 // This will send message to everyone including the sender
 
-      io.emit('newMessage',{
-        from : message.from,
-        text : message.text,
-        createdAt : new Date().getTime()
-      });
+      io.emit('newMessage',generatemessage(message.from,message.text));
 
 
 /* The Broadcast will send message to everybody except the one who send it
@@ -58,14 +49,18 @@ io.on('connection',(socket)=>{
       });
     });
 */
+});
 
 socket.on('disconnect',()=>{
     console.log('User was disconnected');
 });
 
+
+
 });
 
-  });
+
+
 server.listen(port,()=>{
     console.log(`Listening on Port ${port}`);
 });
