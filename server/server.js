@@ -33,13 +33,13 @@ io.on('connection',(socket)=>{
     socket.broadcast.emit('newMessage',generatemessage("Admin","New User Joined"));
 
 
-    socket.on('createMessage',(message)=>{
+    socket.on('createMessage',(message,callback)=>{
       console.log('createMessage',message);
 
 // This will send message to everyone including the sender
 
       io.emit('newMessage',generatemessage(message.from,message.text));
-
+      callback('Got it');
 
 /* The Broadcast will send message to everybody except the one who send it
       socket.broadcast.emit('newMessage',{

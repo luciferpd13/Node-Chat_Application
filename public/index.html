@@ -4,9 +4,27 @@
   <head>
     <meta charset="utf-8">
     <title>Node-Chat-Application</title>
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+
   </head>
   <body>
     <h1 align="center">Welcome to Chat Application</h1>
+
+    <div class="container">
+        <form id="msg-form">
+          <div class="form-group">
+            <ol id="msg"></ol>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Message" name="msg"/>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary text-center">Send</button>
+          </div>
+        </form>
+    </div>
 
 
 <!-- **************** Scripts ****************** -->
@@ -14,7 +32,14 @@
     <!--  Socket Script ---------->
     <script src="/socket.io/socket.io.js"></script>
 
+    <!--  BootStrap Script ---------->
+    <script src="js/libs/bootstrap.min.js"></script>
+
+    <!--  jquery Script ---------->
+    <script src="js/libs/jquery-3.3.1.min.js"></script>
+
     <!--  Custom Script ---------->
     <script src="js/index.js"></script>
+
   </body>
 </html>
