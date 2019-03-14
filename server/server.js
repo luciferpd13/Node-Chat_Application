@@ -39,7 +39,7 @@ io.on('connection',(socket)=>{
 // This will send message to everyone including the sender
 
       io.emit('newMessage',generatemessage(message.from,message.text));
-      callback('Got it');
+      callback();
 
 /* The Broadcast will send message to everybody except the one who send it
       socket.broadcast.emit('newMessage',{

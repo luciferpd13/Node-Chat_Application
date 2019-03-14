@@ -1,31 +1,37 @@
-
 <<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Node-Chat-Application</title>
 
-    <!-- BootStrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+<!--  Custom Css ------------>
+<link rel="stylesheet" href="css/styles.css"/>
 
   </head>
-  <body>
-    <h1 align="center">Welcome to Chat Application</h1>
+  <body class="chat">
 
-    <div class="container">
+  <div class="chat__sidebar">
+    <h3>People</h3>
+    <div id="users"></div>
+  </div>
+
+  <div class="chat__main">
+    <ol id="msg" class="chat__messages"></ol>
+
+    <div class="chat__footer">
         <form id="msg-form">
-          <div class="form-group">
-            <ol id="msg"></ol>
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="text" placeholder="Message" name="msg"/>
-          </div>
-          <div class="form-group">
+
+            <input class="form-control" type="text" placeholder="Message" name="msg"/ autofocus autocomplete="off"/>
+
+
             <button class="btn btn-primary text-center">Send</button>
-          </div>
+
         </form>
         <button id="send-location" class="btn-warning">Send Location</button>
     </div>
+</div>
+  </div>
+
 
 
 <!-- **************** Scripts ****************** -->
@@ -33,8 +39,6 @@
     <!--  Socket Script ---------->
     <script src="/socket.io/socket.io.js"></script>
 
-    <!--  BootStrap Script ---------->
-    <script src="js/libs/bootstrap.min.js"></script>
 
     <!--  jquery Script ---------->
     <script src="js/libs/jquery-3.3.1.min.js"></script>
