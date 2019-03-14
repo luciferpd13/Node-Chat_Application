@@ -2,20 +2,33 @@
 
 socket.on('connect',function(){
    console.log("Connected to Server");
-
 });
+
+
+
+
 
 socket.on('newMessage',function(message){
    console.log("newMessage",message);
+   var formattedTime = moment(message.createdAt).format('h:mm a');
    var li = $("<li></li>");
-   li.text(`${message.from}: ${message.text}`);
+   li.text(`${message.from} ${formattedTime}:  ${message.text}`);
 
    $('#msg').append(li);
  });
 
+
+
+
+
+
 socket.on('diconnect',function(){
    console.log("Disconnectd to Server");
 });
+
+
+
+
 
 $('#msg-form').on('submit',function(e){
   e.preventDefault();
@@ -29,6 +42,10 @@ $('#msg-form').on('submit',function(e){
   });
 
 });
+
+
+
+
 
 var locationButton = $('#send-location') ;
  locationButton.on("click",function(){
@@ -50,10 +67,16 @@ var locationButton = $('#send-location') ;
    });
  });
 
+
+
+
+
+
 socket.on('newLocationMessage',function(message){
+  var formattedTime = moment(message.createdAt).format('h:mm a');
   var li = $('<li></li>');
   var a = $('<a target="_blank">My Current Location</a>');
-  li.text(`${message.from}: `);
+  li.text(`${message.from} ${formattedTime}: `);
   a.attr('href',message.url);
   li.append(a);
   $('#msg').append(li);
