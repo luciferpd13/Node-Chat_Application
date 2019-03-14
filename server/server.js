@@ -17,7 +17,7 @@ var server = http.createServer(app);
 var io = socketIO(server);
 
 //importing generatemessage module
-const {generatemessage} = require("./utils/message");
+const {generatemessage,generateLocationMessage} = require("./utils/message");
 
 //setting up middleware
 
@@ -55,7 +55,9 @@ socket.on('disconnect',()=>{
     console.log('User was disconnected');
 });
 
-
+socket.on('createLocationMessage',(coords)=>{
+   io.emit('newLocationMessage', generateLocationMessage('Admin',coords.latitude,coords.longitude))
+});
 
 });
 

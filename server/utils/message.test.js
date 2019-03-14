@@ -1,11 +1,11 @@
 var expect = require('expect');
-var {generateMessage} = require("./message");
+var {generatemessage,generateLocationMessage} = require("./message");
 
-describe('generateMessage',()=>{
+describe('generatemessage',()=>{
  it('Should generate correct message object',()=>{
       var from = "PD";
       var text = "Hello"
-      var res = generateMessage(from,text);
+      var res = generatemessage(from,text);
 
 /* -------------- NOTE -----------------
 
@@ -29,5 +29,22 @@ replaced them
         from,
         text
       });
- })
+ });
+});
+
+
+describe('generateLocationMessage',()=>{
+ it('Should generate correct location object',()=>{
+      var from = "PD";
+      var latitude = 1;
+      var longitude = 1;
+      var url = `https://www.google.com/maps?q=${latitude},${longitude}`;
+      var res = generateLocationMessage(from,latitude,longitude);
+      expect(typeof res.createdAt).toBe('number');
+
+      expect(res).toMatchObject({
+        from,
+        url
+      });
+ });
 });
