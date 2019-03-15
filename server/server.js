@@ -19,6 +19,9 @@ var io = socketIO(server);
 //importing generatemessage module
 const {generatemessage,generateLocationMessage} = require("./utils/message");
 
+//importing validator for deparam
+const {isRealString} = require("./utils/validation");
+
 //setting up middleware
 
 // io is responsible for all connections while socket is for only one connection
@@ -32,7 +35,17 @@ io.on('connection',(socket)=>{
 
     socket.broadcast.emit('newMessage',generatemessage("Admin","New User Joined"));
 
+// deparamter for room
+    socket.on('join', (params,callback)=>{
+        if(!isRealString(params .name) || !isRealString(params.room)){
+          callback('Name and Room name are required');
+        }
+        callback();
+    });
 
+
+
+//create message
     socket.on('createMessage',(message,callback)=>{
       console.log('createMessage',message);
 
