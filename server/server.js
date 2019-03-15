@@ -58,11 +58,12 @@ io.on('connection',(socket)=>{
 
 //create message
     socket.on('createMessage',(message,callback)=>{
-      console.log('createMessage',message);
+    var user = users.getUser(socket.id);
+    if(user && isRealString(message.text)){
+      // This will send message to everyone including the sender
+        io.to(user.room).emit('newMessage',generatemessage(user.name,message.text));
+    }
 
-// This will send message to everyone including the sender
-
-      io.emit('newMessage',generatemessage(message.from,message.text));
       callback();
 
 /* The Broadcast will send message to everybody except the one who send it
@@ -86,7 +87,10 @@ socket.on('disconnect',()=>{
 });
 
 socket.on('createLocationMessage',(coords)=>{
-   io.emit('newLocationMessage', generateLocationMessage('Admin',coords.latitude,coords.longitude))
+  var user = users.getUser(socket.id);
+  if(user){
+   io.to(user.room).emit('newLocationMessage', generateLocationMessage(user.name,coords.latitude,coords.longitude))
+ }
 });
 
 });
