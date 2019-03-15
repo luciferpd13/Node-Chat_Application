@@ -11,8 +11,8 @@ Just Go through this link to view -> https://agile-mesa-32790.herokuapp.com
   3. In the Main page you can send text and your current location to anyone.
   4. In any case if you did'nt manage to send your location check your browser permission for location and in the case of Android or IOS just allow Web App to access location.
   
-  Developed By:-  Prasanna Dubey
-  Tools Used:- Node.js
-  Email: - prasanna.dubey13@gmail.com
-  Contact :- +917974263781
+  Developed By:-  Prasanna Dubey,
+  Tools Used:- Node.js,
+  Email: - prasanna.dubey13@gmail.com,
+  Contact :- +917974263781,
   
