@@ -14,7 +14,7 @@
     "author": "Prasanna Dubey",
     "license": "ISC",
     "dependencies": {
-        "express": "^4.16.4",
+        "express": "^4.18.2",
         "moment": "^2.24.0",
         "path": "^0.12.7",
         "socket.io": "^2.2.0"
