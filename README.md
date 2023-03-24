@@ -1,6 +1,6 @@
 ### Node-Chat_Application (Developed By Prasanna Dubey)
 
-Just Go through this link to view -> https://agile-mesa-32790.herokuapp.com
+Just Go through this link to view -> https://chat-kiqk.onrender.com
 
  Node Chat Application is a real time web application which allows you to chat without any wait or page reload, similar
   to WhatsApp or other chat application you can chat through this web application.
